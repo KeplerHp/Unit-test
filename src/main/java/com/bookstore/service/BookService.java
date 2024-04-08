@@ -5,8 +5,6 @@ import com.bookstore.entity.Book;
 import com.github.pagehelper.PageInfo;
 import java.util.List;
 import java.util.Map;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface BookService {
   List<Book> getBooks();
