@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > MessageUtil</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.bookstore.utils.messageUtils</a>
+</div>
+
+<h1>Coverage Summary for Class: MessageUtil (com.bookstore.utils.messageUtils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MessageUtil</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.utils.messageUtils;
+&nbsp;
+&nbsp;import net.sf.json.JSONObject;
+&nbsp;
+<b class="nc">&nbsp;public class MessageUtil {</b>
+&nbsp;
+&nbsp;  public static final String LOGIN_ERROR_MSG = &quot;密码或用户名有误，请重新输入！&quot;;
+&nbsp;  public static final String LOGIN_BAN_MSG =&quot;此用户已被禁用！&quot;;
+&nbsp;  public static final String LOGIN_SUCCESS_MSG = &quot;登陆成功！&quot;;
+&nbsp;  public static final String ALREADY_LOGIN_MSG = &quot;用户已经登陆。&quot;;
+&nbsp;  public static final String NOT_LOGIN_MSG = &quot;用户未登陆！&quot;;
+&nbsp;  public static final String LOGOUT_SUCCESS_MSG = &quot;退出登录成功！&quot;;
+&nbsp;  public static final String LOGOUT_ERROR_MSG = &quot;退出登录失败！&quot;;
+&nbsp;  public static final String REGISTER_ERROR_MSG = &quot;此用户名已注册，请更换其他用户名！&quot;;
+&nbsp;  public static final String REGISTER_SUCCESS_MSG = &quot;注册成功!&quot;;
+&nbsp;  public static final String NOT_ALLOW_MSG=&quot;当前用户非管理员，不能访问此页面。&quot;;
+&nbsp;
+&nbsp;
+&nbsp;  public static final int LOGIN_ERROR_CODE = -1;
+&nbsp;  public static final int LOGIN_SUCCESS_CODE = 1;
+&nbsp;  public static final int NOT_LOGIN_CODE = -2;
+&nbsp;  public static final int ALREADY_LOGIN_CODE = 0;
+&nbsp;  public static final int LOGOUT_SUCCESS_CODE = 2;
+&nbsp;  public static final int LOGOUT_ERROR_CODE = -3;
+&nbsp;  public static final int REGISTER_ERROR_CODE = -4;
+&nbsp;  public static final int REGISTER_SUCCESS_CODE = 4;
+&nbsp;  public static final int NOT_ALLOW_CODE=5;
+&nbsp;
+&nbsp;  public static Message createMessage(int statusCode, String message) {
+<b class="fc">&nbsp;    return new Message(statusCode, message);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public static Message createMessage(int statusCode, String message, JSONObject data) {
+<b class="fc">&nbsp;    return new Message(statusCode, message, data);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-10 20:28</div>
+</div>
+</body>
+</html>
