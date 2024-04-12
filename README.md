@@ -1,0 +1,3 @@
+- 已完成test:
+  - book:  service、repository（助教说可不测）、entity
+  - cart:    service
