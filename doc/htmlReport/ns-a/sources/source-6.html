@@ -1,0 +1,99 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > BookService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.bookstore.service</a>
+</div>
+
+<h1>Coverage Summary for Class: BookService (com.bookstore.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">BookService$MockitoMock$1387538068</td>
+  </tr>
+  <tr>
+    <td class="name">BookService$MockitoMock$1387538068$auxiliary$8AmnpfHE</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
+&nbsp;
+&nbsp;import com.bookstore.entity.Book;
+&nbsp;
+&nbsp;import com.github.pagehelper.PageInfo;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+&nbsp;
+&nbsp;public interface BookService {
+&nbsp;  List&lt;Book&gt; getBooks();
+&nbsp;
+&nbsp;  PageInfo&lt;Book&gt; getBooksByPage(Integer num);
+&nbsp;
+&nbsp;  Book getBookByBookId(Integer bookId);
+&nbsp;
+&nbsp;  void deleteBookByBookId(Integer bookId);
+&nbsp;
+&nbsp;  void addBook(Map&lt;String, String&gt; params);
+&nbsp;
+&nbsp;  List&lt;Book&gt; getBookByName(String name);
+&nbsp;
+&nbsp;  void updateBook(Map&lt;String,String&gt; params);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-10 20:28</div>
+</div>
+</body>
+</html>
