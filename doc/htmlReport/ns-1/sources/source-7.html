@@ -1,0 +1,209 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > UserController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.bookstore.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: UserController (com.bookstore.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (32/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.controller;
+&nbsp;
+&nbsp;import com.bookstore.entity.User;
+&nbsp;import com.bookstore.entity.UserAuth;
+&nbsp;import com.bookstore.service.UserService;
+&nbsp;import com.bookstore.utils.messageUtils.Message;
+&nbsp;import com.bookstore.utils.messageUtils.MessageUtil;
+&nbsp;import com.bookstore.utils.sessionUtils.SessionUtil;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.List;
+&nbsp;import net.sf.json.JSONObject;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+&nbsp;import org.springframework.web.bind.annotation.RestController;
+&nbsp;
+&nbsp;@RestController
+&nbsp;public class UserController {
+&nbsp;
+&nbsp;  final UserService userService;
+&nbsp;
+&nbsp;  @Autowired
+<b class="fc">&nbsp;  UserController(UserService userService) {</b>
+<b class="fc">&nbsp;    this.userService = userService;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/checkAuth&quot;)
+&nbsp;  UserAuth checkAuth(@RequestParam(&quot;userAccount&quot;) String userAccount,
+&nbsp;      @RequestParam(&quot;userPassword&quot;) String userPassword) {
+<b class="fc">&nbsp;    return userService.checkAuth(userAccount, userPassword);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/getUser&quot;)
+&nbsp;  User getUser() {
+<b class="fc">&nbsp;    return userService.getUser();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/getUserById&quot;)
+&nbsp;  User getUserById(@RequestParam(&quot;userId&quot;) Integer userId) {
+<b class="fc">&nbsp;    return userService.getUserById(userId);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /* 管理员获取所有用户,管理权限 */
+&nbsp;  @RequestMapping(&quot;/getAllUsers&quot;)
+&nbsp;  List&lt;User&gt; getAllUsers() {
+<b class="fc">&nbsp;    JSONObject Auth = SessionUtil.getAuth();</b>
+<b class="fc">&nbsp;    if(Auth==null) return null;</b>
+<b class="fc">&nbsp;    Integer isAdmin = Auth.getInt(&quot;userType&quot;);</b>
+<b class="fc">&nbsp;    if(isAdmin==0) return null;</b>
+<b class="fc">&nbsp;    return userService.getAllUsers();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /* 管理员禁用，解禁用户的状态*/
+&nbsp;  @RequestMapping(&quot;/updateUserStatus&quot;)
+&nbsp;  void updateUserStatus(@RequestParam(&quot;userId&quot;) Integer userId,@RequestParam(&quot;enabled&quot;) Boolean enabled)
+&nbsp;  {
+<b class="fc">&nbsp;    userService.updateUserStatus(userId,enabled);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/register&quot;)
+&nbsp;  public Message register(@RequestBody Map&lt;String, String&gt; params) {
+<b class="fc">&nbsp;    String username = params.get(&quot;username&quot;);</b>
+<b class="fc">&nbsp;    String password = params.get(&quot;password&quot;);</b>
+<b class="fc">&nbsp;    String email = params.get(&quot;email&quot;);</b>
+<b class="fc">&nbsp;    String name = params.get(&quot;name&quot;);</b>
+<b class="fc">&nbsp;    boolean status = userService.register(username, password, name, email);</b>
+&nbsp;
+<b class="fc">&nbsp;    if (status) {</b>
+<b class="fc">&nbsp;      return MessageUtil</b>
+<b class="fc">&nbsp;          .createMessage(MessageUtil.REGISTER_SUCCESS_CODE, MessageUtil.REGISTER_SUCCESS_MSG);</b>
+&nbsp;    } else {
+<b class="fc">&nbsp;      return MessageUtil</b>
+<b class="fc">&nbsp;          .createMessage(MessageUtil.REGISTER_ERROR_CODE, MessageUtil.REGISTER_ERROR_MSG);</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/registerCheck&quot;)
+&nbsp;  public boolean registerCheck(@RequestParam(&quot;username&quot;) String username) {
+<b class="fc">&nbsp;    return userService.registerCheck(username);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  @RequestMapping(&quot;/checkSession&quot;)
+&nbsp;  public Message checkSession() {
+<b class="fc">&nbsp;    JSONObject Auth = SessionUtil.getAuth();</b>
+<b class="fc">&nbsp;    System.out.println(&quot;checkSession: &quot; + Auth);</b>
+<b class="fc">&nbsp;    if (Auth != null) {</b>
+<b class="fc">&nbsp;      Integer isAdmin = Auth.getInt(&quot;userType&quot;);</b>
+<b class="fc">&nbsp;      if (isAdmin == 0) {</b>
+<b class="fc">&nbsp;        return MessageUtil</b>
+<b class="fc">&nbsp;            .createMessage(MessageUtil.NOT_ALLOW_CODE, MessageUtil.NOT_ALLOW_MSG);</b>
+&nbsp;      } else {
+<b class="fc">&nbsp;        return MessageUtil</b>
+<b class="fc">&nbsp;            .createMessage(MessageUtil.ALREADY_LOGIN_CODE, MessageUtil.ALREADY_LOGIN_MSG);</b>
+&nbsp;      }
+&nbsp;    } else {
+<b class="fc">&nbsp;      return MessageUtil.createMessage(MessageUtil.NOT_LOGIN_CODE, MessageUtil.NOT_LOGIN_MSG);</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-10 20:39</div>
+</div>
+</body>
+</html>
