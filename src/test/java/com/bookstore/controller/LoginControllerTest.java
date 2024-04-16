@@ -1,8 +1,8 @@
 package com.bookstore.controller;
+
 import com.bookstore.entity.User;
 import com.bookstore.entity.UserAuth;
 import com.bookstore.service.UserService;
-import com.bookstore.serviceimpl.UserServiceImpl;
 import com.bookstore.utils.sessionUtils.SessionUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -97,6 +97,3 @@ class LoginControllerTest {
         }
     }
 }
-
-
-

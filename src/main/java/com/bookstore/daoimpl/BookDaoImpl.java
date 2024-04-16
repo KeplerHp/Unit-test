@@ -6,6 +6,7 @@ import com.bookstore.repository.BookRepository;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,7 @@ public class BookDaoImpl implements BookDao {
   @Override
   public List<Book> getBooks() {
     System.out.println("getBooks dao executed.");
-    List<Book> bookList = bookRepository.getBooks();
-    return bookList;
+      return bookRepository.getBooks();
   }
 
   @Override
@@ -59,7 +59,7 @@ public class BookDaoImpl implements BookDao {
       return;
     }
     BigDecimal price = new BigDecimal(params.get("price"));
-    price = price.setScale(2, BigDecimal.ROUND_HALF_UP);  //保留两位，四舍五入
+    price = price.setScale(2, RoundingMode.HALF_UP);  //保留两位，四舍五入
 
     if (params.get("inventory") == null) {
       return;
@@ -101,7 +101,7 @@ public class BookDaoImpl implements BookDao {
     if(brief!=null) bookRepository.modifyBrief(bookId,brief);
 
     BigDecimal price = new BigDecimal(params.get("price"));
-    price = price.setScale(2, BigDecimal.ROUND_HALF_UP);  //保留两位，四舍五入
+    price = price.setScale(2, RoundingMode.HALF_UP);  //保留两位，四舍五入
     if(price.compareTo(BigDecimal.ZERO)>0) bookRepository.modifyPrice(bookId,price);
 
     Integer inventory = new Integer(params.get("inventory"));
