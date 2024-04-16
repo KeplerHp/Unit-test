@@ -61,6 +61,7 @@ public class OrderDaoImpl implements OrderDao {
 
   @Override
   public List<OrderStat> getAllOrderByTime(String t1, String t2) {
+    System.out.println("输出时间："+t1);
     Timestamp time_start=new Timestamp(Long.parseLong(t1));
     Timestamp time_end=new Timestamp(Long.parseLong(t2));
     List<Order> tmp=orderRepository.getAllOrderByTime(time_start,time_end);  //拿到订单

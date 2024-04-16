@@ -13,12 +13,10 @@ import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+
 
 @Repository
 public class CartDaoImpl implements CartDao {
@@ -66,8 +64,7 @@ public class CartDaoImpl implements CartDao {
     if (userId == null) {
       return null;
     }
-    List<CartItem> item = cartRepository.getRealCartItems(userId);
-    return item;
+    return cartRepository.getRealCartItems(userId);
   }
 
   @Override
@@ -117,21 +114,19 @@ public class CartDaoImpl implements CartDao {
     List<CartItem> myCart = cartRepository.getRealCartItems(userId);
     BigDecimal myPrice =BigDecimal.ZERO;
 
-    for(int i=0;i<myCart.size();i++)
-    {
-      CartItem myItem = myCart.get(i);
-      Book myBook = bookRepository.getBookByBookId(myItem.getBookId());
-      if (myItem.getAmount() > myBook.getInventory()) {
-        continue;
-      } else {
-        bookRepository
-            .modifyInventory(myItem.getBookId(), myBook.getInventory() - myItem.getAmount());
-        myPrice = myPrice.add( BigDecimal.valueOf( myItem.getAmount()).multiply(myBook.getPrice()));
+      for (CartItem myItem : myCart) {
+          Book myBook = bookRepository.getBookByBookId(myItem.getBookId());
+          if (myItem.getAmount() > myBook.getInventory()) {
+              continue;
+          } else {
+              bookRepository
+                      .modifyInventory(myItem.getBookId(), myBook.getInventory() - myItem.getAmount());
+              myPrice = myPrice.add(BigDecimal.valueOf(myItem.getAmount()).multiply(myBook.getPrice()));
 
+          }
       }
-    }
 
-    orderRepository.addOrder(userId, nowDate,myPrice); //加订单
+    orderRepository.addOrder(userId, nowDate, myPrice); //加订单
     cartRepository.submitCart(userId);  //清空购物车
 
     Order myOrder = orderRepository.getMaxOrder();

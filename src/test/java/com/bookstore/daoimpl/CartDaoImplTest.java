@@ -82,6 +82,7 @@ class CartDaoImplTest {
         }
     }
 
+
     @Test
     void getRealCartItems() {
         try(MockedStatic<SessionUtil> theMock= Mockito.mockStatic(SessionUtil.class)){

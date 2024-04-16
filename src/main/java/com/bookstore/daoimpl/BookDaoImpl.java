@@ -27,7 +27,7 @@ public class BookDaoImpl implements BookDao {
   @Override
   public List<Book> getBooks() {
     System.out.println("getBooks dao executed.");
-      return bookRepository.getBooks();
+    return bookRepository.getBooks();
   }
 
   @Override
@@ -128,8 +128,5 @@ public class BookDaoImpl implements BookDao {
         pageInfo.setList(result);
         pageInfo.setTotal(books.size());
     return pageInfo;
-
   }
-
-
 }

@@ -19,7 +19,7 @@ public class HomeDaoImpl implements HomeDao {
 
     @Override
     public List<HomeItem> getHomeContent() {
-        System.out.println("homepage dao executed");
+        System.out.println("------homepage dao executed------");
         System.out.println(homeRepository.getHomeContent());
         return homeRepository.getHomeContent();
     }
