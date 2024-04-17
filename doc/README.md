@@ -1,7 +1,6 @@
 # 软件测试 作业2 单元测试
 
-> author: 汪毅恒 
-> id: 521021910451  
+> 汪毅恒  &emsp; &emsp; 521021910451  
 
 ## 被测代码
 被测代码为后端项目中的Order和OrderItem部分，包括它们的daoimpl、entity、serviceimpl等部分。
