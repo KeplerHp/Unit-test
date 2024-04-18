@@ -20,46 +20,45 @@
 - OrderDaoImpl    
     | 待测函数           | 变量         | 路径开始节点 | 路径结束节点 | 是否定义清除 |
     | ------------------ | ------------ | ------------ | ------------ | ------------ |
-    | getOrder           | userId       | 43           | 49           | 是           |
+    | getOrder           | userId       | 43           | 47           | 是           |
     | \                  | res          | 47           | 49           | 是           |
     | getOrderRepository | 返回值       | 33           | 33           | 是           |
     | getBookRepository  | 返回值       | 38           | 38           | 是           |
     | getOrderByOrderId  | 返回值       | 54           | 54           | 是           |
     | getAllOrder        | 返回值       | 59           | 59           | 是           |
-    | getAllOrderByTime  | time_start   | 65           | 115          | 是           |
-    | \                  | time_end     | 66           | 115          | 是           |
-    | \                  | tmp          | 67           | 115          | 是           |
-    | \                  | map          | 68           | 115          | 是           |
-    | \                  | total_price  | 69           | 115          | 是           |
-    | \                  | total_amount | 70           | 115          | 是           |
-    | \                  | now          | 73           | 88           | 是           |
-    | \                  | items        | 75           | 87           | 是           |
-    | \                  | item         | 78           | 86           | 是           |
-    | \                  | bookId       | 79           | 86           | 是           |
-    | \                  | amount       | 80           | 86           | 是           |
-    | \                  | sortedMap    | 91           | 115          | 是           |
+    | getAllOrderByTime  | time_start   | 65           | 74           | 是           |
+    | \                  | time_end     | 66           | 74           | 是           |
+    | \                  | tmp          | 67           | 73           | 是           |
+    | \                  | map          | 68           | 91           | 是           |
+    | \                  | total_price  | 69           | 112          | 是           |
+    | \                  | total_amount | 70           | 113          | 是           |
+    | \                  | now          | 73           | 76           | 是           |
+    | \                  | items        | 75           | 78           | 是           |
+    | \                  | item         | 78           | 80           | 是           |
+    | \                  | bookId       | 79           | 85           | 是           |
+    | \                  | amount       | 80           | 85           | 是           |
+    | \                  | sortedMap    | 91           | 97           | 是           |
     | \                  | res          | 95           | 115          | 是           |
-    | \                  | orderStat    | 99           | 106          | 是           |
-    | \                  | book         | 102          | 106          | 是           |
-    | \                  | orderStat    | 111          | 115          | 是           |
-    | getOrderByTime     | time_start   | 65           | 115          | 是           |
-    | \                  | userId       | 120          | 175          | 是           |
-    | \                  | time_end     | 124          | 175          | 是           |
-    | \                  | time_end     | 125          | 175          | 是           |
-    | \                  | tmp          | 126          | 175          | 是           |
-    | \                  | map          | 127          | 175          | 是           |
-    | \                  | total_price  | 128          | 175          | 是           |
-    | \                  | total_amount | 129          | 175          | 是           |
-    | \                  | now          | 132          | 147          | 是           |
-    | \                  | items        | 134          | 146          | 是           |
-    | \                  | item         | 137          | 145          | 是           |
-    | \                  | bookId       | 138          | 145          | 是           |
-    | \                  | amount       | 139          | 145          | 是           |
-    | \                  | sortedMap    | 150          | 175          | 是           |
+    | \                  | orderStat    | 99           | 105          | 是           |
+    | \                  | book         | 102          | 104          | 是           |
+    | \                  | orderStat    | 111          | 114          | 是           |
+    | getOrderByTime     | userId       | 120          | 126          | 是           |
+    | \                  | time_start   | 124          | 133          | 是           |
+    | \                  | time_end     | 125          | 133          | 是           |
+    | \                  | tmp          | 126          | 132          | 是           |
+    | \                  | map          | 127          | 150          | 是           |
+    | \                  | total_price  | 128          | 171          | 是           |
+    | \                  | total_amount | 129          | 172          | 是           |
+    | \                  | now          | 132          | 135          | 是           |
+    | \                  | items        | 134          | 137          | 是           |
+    | \                  | item         | 137          | 139          | 是           |
+    | \                  | bookId       | 138          | 144          | 是           |
+    | \                  | amount       | 139          | 144          | 是           |
+    | \                  | sortedMap    | 150          | 156          | 是           |
     | \                  | res          | 154          | 175          | 是           |
-    | \                  | orderStat    | 158          | 165          | 是           |
-    | \                  | book         | 161          | 165          | 是           |
-    | \                  | orderStat    | 111          | 175          | 是           |
+    | \                  | orderStat    | 158          | 164          | 是           |
+    | \                  | book         | 161          | 163          | 是           |
+    | \                  | orderStat    | 111          | 173          | 是           |
 
 
 - OrderItemDaoImpl
