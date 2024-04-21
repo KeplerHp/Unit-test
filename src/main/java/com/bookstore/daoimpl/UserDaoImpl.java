@@ -5,7 +5,6 @@ import com.bookstore.entity.User;
 import com.bookstore.entity.UserAuth;
 import com.bookstore.repository.UserAuthRepository;
 import com.bookstore.repository.UserRepository;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -85,6 +84,6 @@ public class UserDaoImpl implements UserDao {
   public boolean registerCheck(String username) {
     System.out.println("registerCheck dao called, username="+username);
     Integer res=userAuthRepository.registerCheck(username);
-    if(res>0) return true; else return false;
+    return res > 0;
   }
 }

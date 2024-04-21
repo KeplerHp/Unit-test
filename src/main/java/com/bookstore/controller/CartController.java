@@ -1,6 +1,5 @@
 package com.bookstore.controller;
 
-import com.bookstore.entity.Order;
 import com.bookstore.entity.CartItem;
 import com.bookstore.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;

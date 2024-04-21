@@ -69,24 +69,21 @@ public class OrderDaoImpl implements OrderDao {
     BigDecimal total_price=new BigDecimal(0);   //统计订单的价格
     Integer total_amount=0;
 
-    for(int i=0;i<tmp.size();i++) {     //把时间范围内的订单的订单项放到map中
-      Order now=tmp.get(i);
-      if(now.getTime().getTime()>=time_start.getTime() && now.getTime().getTime()<=time_end.getTime()) {
-        List<OrderItem> items=now.getOrderItem();
-        total_price=total_price.add(now.getPrice());
-        for(int j=0;j<items.size();j++) {
-          OrderItem item=items.get(j);
-          Integer bookId=item.getBookId();
-          Integer amount=item.getAmount();
-          if(map.containsKey(bookId)) {
-            map.put(bookId,map.get(bookId)+amount);
+      for (Order now : tmp) {     //把时间范围内的订单的订单项放到map中
+          if (now.getTime().getTime() >= time_start.getTime() && now.getTime().getTime() <= time_end.getTime()) {
+              List<OrderItem> items = now.getOrderItem();
+              total_price = total_price.add(now.getPrice());
+              for (OrderItem item : items) {
+                  Integer bookId = item.getBookId();
+                  Integer amount = item.getAmount();
+                  if (map.containsKey(bookId)) {
+                      map.put(bookId, map.get(bookId) + amount);
+                  } else {
+                      map.put(bookId, amount);
+                  }
+              }
           }
-          else {
-            map.put(bookId,amount);
-          }
-        }
       }
-    }
 
     Map<Integer,Integer> sortedMap = map.entrySet().stream()    //对map进行排序
         .sorted(Entry.comparingByValue())
@@ -128,24 +125,21 @@ public class OrderDaoImpl implements OrderDao {
     BigDecimal total_price=new BigDecimal(0);   //统计订单的价格
     Integer total_amount=0;
 
-    for(int i=0;i<tmp.size();i++) {     //把时间范围内的订单的订单项放到map中
-      Order now=tmp.get(i);
-      if(now.getTime().getTime()>=time_start.getTime() && now.getTime().getTime()<=time_end.getTime()) {
-        List<OrderItem> items=now.getOrderItem();
-        total_price=total_price.add(now.getPrice());
-        for(int j=0;j<items.size();j++) {
-          OrderItem item=items.get(j);
-          Integer bookId=item.getBookId();
-          Integer amount=item.getAmount();
-          if(map.containsKey(bookId)) {
-            map.put(bookId,map.get(bookId)+amount);
+      for (Order now : tmp) {     //把时间范围内的订单的订单项放到map中
+          if (now.getTime().getTime() >= time_start.getTime() && now.getTime().getTime() <= time_end.getTime()) {
+              List<OrderItem> items = now.getOrderItem();
+              total_price = total_price.add(now.getPrice());
+              for (OrderItem item : items) {
+                  Integer bookId = item.getBookId();
+                  Integer amount = item.getAmount();
+                  if (map.containsKey(bookId)) {
+                      map.put(bookId, map.get(bookId) + amount);
+                  } else {
+                      map.put(bookId, amount);
+                  }
+              }
           }
-          else {
-            map.put(bookId,amount);
-          }
-        }
       }
-    }
 
     Map<Integer,Integer> sortedMap = map.entrySet().stream()    //对map进行排序
         .sorted(Entry.comparingByValue())

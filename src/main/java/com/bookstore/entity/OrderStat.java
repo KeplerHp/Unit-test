@@ -1,7 +1,7 @@
 package com.bookstore.entity;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.math.BigDecimal;
-import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
 

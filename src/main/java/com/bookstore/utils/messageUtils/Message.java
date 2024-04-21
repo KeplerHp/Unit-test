@@ -13,7 +13,7 @@ public class Message {
         this.data = data;
     }
 
-    Message(int status, String message) {
+    public Message(int status, String message) {
         this.status = status;
         this.message = message;
         this.data = null;

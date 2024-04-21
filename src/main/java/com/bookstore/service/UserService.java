@@ -2,7 +2,6 @@ package com.bookstore.service;
 
 import com.bookstore.entity.User;
 import com.bookstore.entity.UserAuth;
-
 import java.util.List;
 
 public interface UserService {

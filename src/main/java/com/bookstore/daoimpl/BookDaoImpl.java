@@ -64,7 +64,7 @@ public class BookDaoImpl implements BookDao {
     if (params.get("inventory") == null) {
       return;
     }
-    Integer inventory = new Integer(params.get("inventory"));
+    Integer inventory = Integer.valueOf(params.get("inventory"));
 
     bookRepository.addBook(name, author, price, isbn, inventory, description, image, type, brief);
   }
@@ -104,7 +104,7 @@ public class BookDaoImpl implements BookDao {
     price = price.setScale(2, RoundingMode.HALF_UP);  //保留两位，四舍五入
     if(price.compareTo(BigDecimal.ZERO)>0) bookRepository.modifyPrice(bookId,price);
 
-    Integer inventory = new Integer(params.get("inventory"));
+    int inventory = Integer.parseInt(params.get("inventory"));
     if(inventory>0) bookRepository.modifyInventory(bookId,inventory);
 
   }

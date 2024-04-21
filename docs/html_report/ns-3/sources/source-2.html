@@ -1,0 +1,263 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > CartDaoImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.bookstore.daoimpl</a>
+</div>
+
+<h1>Coverage Summary for Class: CartDaoImpl (com.bookstore.daoimpl)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CartDaoImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (56/56)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CartDaoImpl$$EnhancerBySpringCGLIB$$b2d09282</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (56/56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.daoimpl;
+&nbsp;
+&nbsp;import com.bookstore.dao.CartDao;
+&nbsp;import com.bookstore.entity.Book;
+&nbsp;import com.bookstore.entity.Order;
+&nbsp;import com.bookstore.entity.CartItem;
+&nbsp;import com.bookstore.repository.BookRepository;
+&nbsp;import com.bookstore.repository.CartRepository;
+&nbsp;import com.bookstore.repository.OrderRepository;
+&nbsp;import com.bookstore.repository.OrderItemRepository;
+&nbsp;import com.bookstore.utils.sessionUtils.SessionUtil;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Repository;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Date;
+&nbsp;import java.sql.Timestamp;
+&nbsp;
+&nbsp;
+&nbsp;@Repository
+<b class="fc">&nbsp;public class CartDaoImpl implements CartDao {</b>
+&nbsp;
+&nbsp;  CartRepository cartRepository;
+&nbsp;  BookRepository bookRepository;
+&nbsp;  OrderRepository orderRepository;
+&nbsp;  OrderItemRepository orderItemRepository;
+&nbsp;
+&nbsp;  @Autowired
+&nbsp;  void setCartRepository(CartRepository cartRepository) {
+<b class="fc">&nbsp;    this.cartRepository = cartRepository;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Autowired
+&nbsp;  void setBookRepository(BookRepository bookRepository) {
+<b class="fc">&nbsp;    this.bookRepository = bookRepository;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Autowired
+&nbsp;  void setOrderRepository(OrderRepository orderRepository) {
+<b class="fc">&nbsp;    this.orderRepository = orderRepository;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Autowired
+&nbsp;  void setOrderItemRepository(OrderItemRepository orderItemRepository) {
+<b class="fc">&nbsp;    this.orderItemRepository = orderItemRepository;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public List&lt;CartItem&gt; getCartItems() {
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+<b class="fc">&nbsp;      return null;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    List&lt;CartItem&gt; item = cartRepository.getItems(userId);</b>
+<b class="fc">&nbsp;    System.out.println(&quot;cartSize:&quot; + item.size());</b>
+<b class="fc">&nbsp;    System.out.println(item);</b>
+<b class="fc">&nbsp;    return item;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public List&lt;CartItem&gt; getRealCartItems() {
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+<b class="fc">&nbsp;      return null;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    return cartRepository.getRealCartItems(userId);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void addCartItem(Integer bookId, Integer amount, Boolean active) {
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+&nbsp;      return;
+&nbsp;    }
+<b class="fc">&nbsp;    CartItem item = cartRepository.getCartItemById(userId, bookId);</b>
+<b class="fc">&nbsp;    if (item != null) {</b>
+<b class="fc">&nbsp;      amount += item.getAmount();</b>
+<b class="fc">&nbsp;      System.out.println(&quot;addItem:&quot; + userId + &quot; &quot; + bookId + &quot; &quot; + amount);</b>
+&nbsp;    }
+<b class="fc">&nbsp;    cartRepository.addCartItem(userId, bookId, amount, active);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void setCartItem(Integer bookId, Boolean active) {
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+&nbsp;      return;
+&nbsp;    }
+<b class="fc">&nbsp;    System.out.println(&quot;setCartItem&quot; + bookId + &quot; &quot; + active);</b>
+<b class="fc">&nbsp;    cartRepository.setCartItem(userId, bookId, active);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void deleteCartItem(Integer bookId) {
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+&nbsp;      return;
+&nbsp;    }
+<b class="fc">&nbsp;    cartRepository.deleteCartItem(userId, bookId);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void submitCart() {
+<b class="fc">&nbsp;    System.out.println(&quot;submitCart dao executed&quot;);</b>
+<b class="fc">&nbsp;    Integer userId = SessionUtil.getUserId();</b>
+<b class="fc">&nbsp;    if (userId == null) {</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;    //SimpleDateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+<b class="fc">&nbsp;    Timestamp nowDate= new Timestamp(new Date().getTime());</b>
+<b class="fc">&nbsp;    System.out.println(&quot;date: &quot;+nowDate);</b>
+<b class="fc">&nbsp;    List&lt;CartItem&gt; myCart = cartRepository.getRealCartItems(userId);</b>
+<b class="fc">&nbsp;    BigDecimal myPrice =BigDecimal.ZERO;</b>
+&nbsp;
+<b class="fc">&nbsp;      for (CartItem myItem : myCart) {</b>
+<b class="fc">&nbsp;          Book myBook = bookRepository.getBookByBookId(myItem.getBookId());</b>
+<b class="fc">&nbsp;          if (myItem.getAmount() &gt; myBook.getInventory()) {</b>
+<b class="fc">&nbsp;              continue;</b>
+&nbsp;          } else {
+<b class="fc">&nbsp;              bookRepository</b>
+<b class="fc">&nbsp;                      .modifyInventory(myItem.getBookId(), myBook.getInventory() - myItem.getAmount());</b>
+<b class="fc">&nbsp;              myPrice = myPrice.add(BigDecimal.valueOf(myItem.getAmount()).multiply(myBook.getPrice()));</b>
+&nbsp;
+&nbsp;          }
+<b class="fc">&nbsp;      }</b>
+&nbsp;
+<b class="fc">&nbsp;    orderRepository.addOrder(userId, nowDate, myPrice); //加订单</b>
+<b class="fc">&nbsp;    cartRepository.submitCart(userId);  //清空购物车</b>
+&nbsp;
+<b class="fc">&nbsp;    Order myOrder = orderRepository.getMaxOrder();</b>
+&nbsp;
+<b class="fc">&nbsp;    for (int i = 0; i &lt; myCart.size(); i++) {</b>
+<b class="fc">&nbsp;      CartItem myItem = myCart.get(i);</b>
+<b class="fc">&nbsp;      Book myBook = bookRepository.getBookByBookId(myItem.getBookId());</b>
+&nbsp;
+<b class="fc">&nbsp;      BigDecimal amount=new BigDecimal(myItem.getAmount().toString());</b>
+<b class="fc">&nbsp;      if (myItem.getAmount() &gt; myBook.getInventory()) {</b>
+<b class="fc">&nbsp;        continue;</b>
+&nbsp;      } else {
+<b class="fc">&nbsp;        orderItemRepository.addItem(myOrder.getOrderId(), myBook.getBookId(), myItem.getAmount(),</b>
+<b class="fc">&nbsp;             amount.multiply(myBook.getPrice()));    //增加订单项</b>
+&nbsp;      }
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-21 22:31</div>
+</div>
+</body>
+</html>

@@ -2,7 +2,6 @@ package com.bookstore.service;
 
 import com.bookstore.entity.CartItem;
 import java.util.List;
-import java.util.Map;
 
 public interface CartService {
   List<CartItem> getCartItems();

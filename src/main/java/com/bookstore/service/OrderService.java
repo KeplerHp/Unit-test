@@ -1,10 +1,7 @@
 package com.bookstore.service;
 
 import com.bookstore.entity.Order;
-import com.bookstore.entity.OrderItem;
-
 import com.bookstore.entity.OrderStat;
-import java.sql.Timestamp;
 import java.util.List;
 
 public interface OrderService {

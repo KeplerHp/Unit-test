@@ -2,7 +2,6 @@ package com.bookstore.dao;
 
 import com.bookstore.entity.CartItem;
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface CartDao {
   List<CartItem> getCartItems();

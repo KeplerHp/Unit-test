@@ -1,20 +1,14 @@
 package com.bookstore.repository;
 
 import com.bookstore.entity.Order;
-import com.bookstore.entity.OrderItem;
-
 import java.math.BigDecimal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Date;
 import java.sql.Timestamp;
-import java.math.BigDecimal;
+
 
 @Transactional
 public interface OrderRepository extends JpaRepository<Order, Integer> {

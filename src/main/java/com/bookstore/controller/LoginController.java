@@ -33,7 +33,7 @@ public class LoginController {
         System.out.println("login Auth:"+ userAuth);
         if (userAuth != null) {
             User nowUser=userService.getUserById(userAuth.getUserId());
-            if(nowUser.getEnabled()==false)
+            if(!nowUser.getEnabled())
             {
                 return MessageUtil.createMessage(MessageUtil.LOGIN_ERROR_CODE, MessageUtil.LOGIN_BAN_MSG);
             }

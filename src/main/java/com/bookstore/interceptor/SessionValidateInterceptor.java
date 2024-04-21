@@ -1,12 +1,10 @@
 package com.bookstore.interceptor;
 
-
 import com.bookstore.utils.messageUtils.Message;
 import com.bookstore.utils.messageUtils.MessageUtil;
 import com.bookstore.utils.sessionUtils.SessionUtil;
 import net.sf.json.JSONObject;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

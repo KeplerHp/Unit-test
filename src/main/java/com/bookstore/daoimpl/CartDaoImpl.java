@@ -131,18 +131,17 @@ public class CartDaoImpl implements CartDao {
 
     Order myOrder = orderRepository.getMaxOrder();
 
-    for (int i = 0; i < myCart.size(); i++) {
-      CartItem myItem = myCart.get(i);
-      Book myBook = bookRepository.getBookByBookId(myItem.getBookId());
+      for (CartItem myItem : myCart) {
+          Book myBook = bookRepository.getBookByBookId(myItem.getBookId());
 
-      BigDecimal amount=new BigDecimal(myItem.getAmount().toString());
-      if (myItem.getAmount() > myBook.getInventory()) {
-        continue;
-      } else {
-        orderItemRepository.addItem(myOrder.getOrderId(), myBook.getBookId(), myItem.getAmount(),
-             amount.multiply(myBook.getPrice()));    //增加订单项
+          BigDecimal amount = new BigDecimal(myItem.getAmount().toString());
+          if (myItem.getAmount() > myBook.getInventory()) {
+              continue;
+          } else {
+              orderItemRepository.addItem(myOrder.getOrderId(), myBook.getBookId(), myItem.getAmount(),
+                      amount.multiply(myBook.getPrice()));    //增加订单项
+          }
       }
-    }
   }
 
 
