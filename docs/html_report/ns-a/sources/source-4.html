@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > BookDao</title>
+  <title>Coverage Report > BookService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.dao</a>
+    <a href="../index.html">com.bookstore.service</a>
 </div>
 
-<h1>Coverage Summary for Class: BookDao (com.bookstore.dao)</h1>
+<h1>Coverage Summary for Class: BookService (com.bookstore.service)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">BookDao$MockitoMock$627248590</td>
+    <td class="name">BookService$MockitoMock$1841765556</td>
   </tr>
   <tr>
-    <td class="name">BookDao$MockitoMock$627248590$auxiliary$qN4RvvI0</td>
+    <td class="name">BookService$MockitoMock$1841765556$auxiliary$0oL0k2o6</td>
   </tr>
   <tr>
-    <td class="name">BookDao$MockitoMock$627248590$auxiliary$vGImpXIi</td>
+    <td class="name">BookService$MockitoMock$1841765556$auxiliary$xOdUX8KF</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,7 +48,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
 &nbsp;
 &nbsp;import com.bookstore.entity.Book;
 &nbsp;
@@ -56,11 +56,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;import java.util.List;
 &nbsp;import java.util.Map;
 &nbsp;
-&nbsp;public interface BookDao {
+&nbsp;public interface BookService {
+&nbsp;  List&lt;Book&gt; getBooks();
+&nbsp;
+&nbsp;  PageInfo&lt;Book&gt; getBooksByPage(Integer num);
 &nbsp;
 &nbsp;  Book getBookByBookId(Integer bookId);
-&nbsp;
-&nbsp;  List&lt;Book&gt; getBooks();
 &nbsp;
 &nbsp;  void deleteBookByBookId(Integer bookId);
 &nbsp;
@@ -69,8 +70,6 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;  List&lt;Book&gt; getBookByName(String name);
 &nbsp;
 &nbsp;  void updateBook(Map&lt;String,String&gt; params);
-&nbsp;
-&nbsp;  PageInfo&lt;Book&gt; getBooksByPage(Integer num);
 &nbsp;}
 </code>
 </pre>
@@ -95,7 +94,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

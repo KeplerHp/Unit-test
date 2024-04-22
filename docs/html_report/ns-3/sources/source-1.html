@@ -57,7 +57,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 </tr>
   <tr>
-    <td class="name">BookDaoImpl$$EnhancerBySpringCGLIB$$3fa22d27</td>
+    <td class="name">BookDaoImpl$$EnhancerBySpringCGLIB$$d83bd608</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -151,7 +151,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;    if (params.get(&quot;inventory&quot;) == null) {</b>
 &nbsp;      return;
 &nbsp;    }
-<b class="fc">&nbsp;    Integer inventory = new Integer(params.get(&quot;inventory&quot;));</b>
+<b class="fc">&nbsp;    Integer inventory = Integer.valueOf(params.get(&quot;inventory&quot;));</b>
 &nbsp;
 <b class="fc">&nbsp;    bookRepository.addBook(name, author, price, isbn, inventory, description, image, type, brief);</b>
 &nbsp;  }
@@ -191,7 +191,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;    price = price.setScale(2, RoundingMode.HALF_UP);  //保留两位，四舍五入</b>
 <b class="fc">&nbsp;    if(price.compareTo(BigDecimal.ZERO)&gt;0) bookRepository.modifyPrice(bookId,price);</b>
 &nbsp;
-<b class="fc">&nbsp;    Integer inventory = new Integer(params.get(&quot;inventory&quot;));</b>
+<b class="fc">&nbsp;    int inventory = Integer.parseInt(params.get(&quot;inventory&quot;));</b>
 <b class="fc">&nbsp;    if(inventory&gt;0) bookRepository.modifyInventory(bookId,inventory);</b>
 &nbsp;
 &nbsp;  }
@@ -240,7 +240,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > UserDao</title>
+  <title>Coverage Report > HomeService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.dao</a>
+    <a href="../index.html">com.bookstore.service</a>
 </div>
 
-<h1>Coverage Summary for Class: UserDao (com.bookstore.dao)</h1>
+<h1>Coverage Summary for Class: HomeService (com.bookstore.service)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">UserDao$MockitoMock$532081989</td>
+    <td class="name">HomeService$MockitoMock$925172701</td>
   </tr>
   <tr>
-    <td class="name">UserDao$MockitoMock$532081989$auxiliary$EAS3FxeN</td>
+    <td class="name">HomeService$MockitoMock$925172701$auxiliary$h1Mce0A0</td>
   </tr>
   <tr>
-    <td class="name">UserDao$MockitoMock$532081989$auxiliary$hgOq6Ne3</td>
+    <td class="name">HomeService$MockitoMock$925172701$auxiliary$jFSquxjN</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,29 +48,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
 &nbsp;
-&nbsp;import com.bookstore.entity.User;
-&nbsp;import com.bookstore.entity.UserAuth;
-&nbsp;
+&nbsp;import com.bookstore.entity.HomeItem;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;public interface UserDao {
-&nbsp;    UserAuth checkAuth(String userAccount, String userPassword);
-&nbsp;
-&nbsp;    User getUser();
-&nbsp;
-&nbsp;    User getUserById(Integer userId);
-&nbsp;
-&nbsp;    boolean register(String username, String password, String name,String email);
-&nbsp;
-&nbsp;    List&lt;User&gt; getAllUsers();
-&nbsp;
-&nbsp;    void updateUserStatus(Integer userId,Boolean enabled);
-&nbsp;
-&nbsp;    boolean registerCheck(String username);
+&nbsp;public interface HomeService {
+&nbsp;    List&lt;HomeItem&gt; getHomeContent();
 &nbsp;}
-&nbsp;
 </code>
 </pre>
 </div>
@@ -94,7 +79,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

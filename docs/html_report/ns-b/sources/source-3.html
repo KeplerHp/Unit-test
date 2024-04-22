@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > CartService</title>
+  <title>Coverage Report > UserDao</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.service</a>
+    <a href="../index.html">com.bookstore.dao</a>
 </div>
 
-<h1>Coverage Summary for Class: CartService (com.bookstore.service)</h1>
+<h1>Coverage Summary for Class: UserDao (com.bookstore.dao)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">CartService$MockitoMock$145824387</td>
+    <td class="name">UserDao$MockitoMock$410455620</td>
   </tr>
   <tr>
-    <td class="name">CartService$MockitoMock$145824387$auxiliary$Hu3EWO84</td>
+    <td class="name">UserDao$MockitoMock$410455620$auxiliary$56RbVPts</td>
   </tr>
   <tr>
-    <td class="name">CartService$MockitoMock$145824387$auxiliary$yWr5WV3m</td>
+    <td class="name">UserDao$MockitoMock$410455620$auxiliary$yUyWMLwD</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,27 +48,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
 &nbsp;
-&nbsp;import com.bookstore.entity.CartItem;
+&nbsp;import com.bookstore.entity.User;
+&nbsp;import com.bookstore.entity.UserAuth;
+&nbsp;
 &nbsp;import java.util.List;
-&nbsp;import java.util.Map;
 &nbsp;
-&nbsp;public interface CartService {
-&nbsp;  List&lt;CartItem&gt; getCartItems();
+&nbsp;public interface UserDao {
+&nbsp;    UserAuth checkAuth(String userAccount, String userPassword);
 &nbsp;
-&nbsp;  List&lt;CartItem&gt; getRealCartItems();
+&nbsp;    User getUser();
 &nbsp;
-&nbsp;  void addCartItem(Integer bookId, Integer amount, Boolean active);
+&nbsp;    User getUserById(Integer userId);
 &nbsp;
-&nbsp;  void setCartItem(Integer bookId,Boolean active);
+&nbsp;    boolean register(String username, String password, String name,String email);
 &nbsp;
-&nbsp;  void deleteCartItem(Integer bookId);
+&nbsp;    List&lt;User&gt; getAllUsers();
 &nbsp;
-&nbsp;  void submitCart();
+&nbsp;    void updateUserStatus(Integer userId,Boolean enabled);
 &nbsp;
-&nbsp;
+&nbsp;    boolean registerCheck(String username);
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -92,7 +94,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

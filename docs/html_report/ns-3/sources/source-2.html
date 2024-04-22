@@ -57,7 +57,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 </tr>
   <tr>
-    <td class="name">CartDaoImpl$$EnhancerBySpringCGLIB$$b2d09282</td>
+    <td class="name">CartDaoImpl$$EnhancerBySpringCGLIB$$4b6a3b63</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -218,18 +218,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 <b class="fc">&nbsp;    Order myOrder = orderRepository.getMaxOrder();</b>
 &nbsp;
-<b class="fc">&nbsp;    for (int i = 0; i &lt; myCart.size(); i++) {</b>
-<b class="fc">&nbsp;      CartItem myItem = myCart.get(i);</b>
-<b class="fc">&nbsp;      Book myBook = bookRepository.getBookByBookId(myItem.getBookId());</b>
+<b class="fc">&nbsp;      for (CartItem myItem : myCart) {</b>
+<b class="fc">&nbsp;          Book myBook = bookRepository.getBookByBookId(myItem.getBookId());</b>
 &nbsp;
-<b class="fc">&nbsp;      BigDecimal amount=new BigDecimal(myItem.getAmount().toString());</b>
-<b class="fc">&nbsp;      if (myItem.getAmount() &gt; myBook.getInventory()) {</b>
-<b class="fc">&nbsp;        continue;</b>
-&nbsp;      } else {
-<b class="fc">&nbsp;        orderItemRepository.addItem(myOrder.getOrderId(), myBook.getBookId(), myItem.getAmount(),</b>
-<b class="fc">&nbsp;             amount.multiply(myBook.getPrice()));    //增加订单项</b>
-&nbsp;      }
-&nbsp;    }
+<b class="fc">&nbsp;          BigDecimal amount = new BigDecimal(myItem.getAmount().toString());</b>
+<b class="fc">&nbsp;          if (myItem.getAmount() &gt; myBook.getInventory()) {</b>
+<b class="fc">&nbsp;              continue;</b>
+&nbsp;          } else {
+<b class="fc">&nbsp;              orderItemRepository.addItem(myOrder.getOrderId(), myBook.getBookId(), myItem.getAmount(),</b>
+<b class="fc">&nbsp;                      amount.multiply(myBook.getPrice()));    //增加订单项</b>
+&nbsp;          }
+<b class="fc">&nbsp;      }</b>
 &nbsp;  }
 &nbsp;
 &nbsp;
@@ -257,7 +256,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

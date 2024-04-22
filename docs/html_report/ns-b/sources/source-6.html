@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > OrderService</title>
+  <title>Coverage Report > OrderItemDao</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.service</a>
+    <a href="../index.html">com.bookstore.dao</a>
 </div>
 
-<h1>Coverage Summary for Class: OrderService (com.bookstore.service)</h1>
+<h1>Coverage Summary for Class: OrderItemDao (com.bookstore.dao)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">OrderService$MockitoMock$1325867824</td>
+    <td class="name">OrderItemDao$MockitoMock$2062652103</td>
   </tr>
   <tr>
-    <td class="name">OrderService$MockitoMock$1325867824$auxiliary$rnB1cCQY</td>
+    <td class="name">OrderItemDao$MockitoMock$2062652103$auxiliary$4BvK5l8A</td>
   </tr>
   <tr>
-    <td class="name">OrderService$MockitoMock$1325867824$auxiliary$yfaUatbQ</td>
+    <td class="name">OrderItemDao$MockitoMock$2062652103$auxiliary$ZQTaoozJ</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,28 +48,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
 &nbsp;
-&nbsp;import com.bookstore.entity.Order;
 &nbsp;import com.bookstore.entity.OrderItem;
-&nbsp;
-&nbsp;import com.bookstore.entity.OrderStat;
-&nbsp;import java.sql.Timestamp;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;public interface OrderService {
-&nbsp;  List&lt;Order&gt; getOrder();
-&nbsp;
-&nbsp;  Order getOrderByOrderId(Integer orderId);
-&nbsp;
-&nbsp;  List&lt;Order&gt; getAllOrder();
-&nbsp;
-&nbsp;  List&lt;OrderStat&gt; getOrderByTime(String t1, String t2);
-&nbsp;
-&nbsp;  List&lt;OrderStat&gt; getAllOrderByTime(String t1, String t2);
-&nbsp;
-&nbsp;
+&nbsp;public interface OrderItemDao {
+&nbsp;  List&lt;OrderItem&gt; getOrderItemById(Integer orderId);
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -93,7 +80,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

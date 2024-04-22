@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > OrderItemRepository</title>
+  <title>Coverage Report > BookRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.bookstore.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: OrderItemRepository (com.bookstore.repository)</h1>
+<h1>Coverage Summary for Class: BookRepository (com.bookstore.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">OrderItemRepository$MockitoMock$1686795333</td>
+    <td class="name">BookRepository$MockitoMock$1538084328</td>
   </tr>
   <tr>
-    <td class="name">OrderItemRepository$MockitoMock$1686795333$auxiliary$8rdZg6EX</td>
+    <td class="name">BookRepository$MockitoMock$1538084328$auxiliary$9GX1zL1n</td>
   </tr>
   <tr>
-    <td class="name">OrderItemRepository$MockitoMock$1686795333$auxiliary$qZewvvxZ</td>
+    <td class="name">BookRepository$MockitoMock$1538084328$auxiliary$kFTCm2Mo</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -50,27 +50,70 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.repository;
 &nbsp;
-&nbsp;import com.bookstore.entity.OrderItem;
-&nbsp;
+&nbsp;import com.bookstore.entity.Book;
+&nbsp;import java.math.BigDecimal;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 &nbsp;import org.springframework.data.jpa.repository.Modifying;
 &nbsp;import org.springframework.data.jpa.repository.Query;
 &nbsp;import org.springframework.data.repository.query.Param;
-&nbsp;import org.springframework.stereotype.Repository;
 &nbsp;import org.springframework.transaction.annotation.Transactional;
-&nbsp;
 &nbsp;import java.util.List;
-&nbsp;import java.math.BigDecimal;
-&nbsp;import java.util.Date;
 &nbsp;
 &nbsp;@Transactional
-&nbsp;public interface OrderItemRepository extends JpaRepository&lt;OrderItem, Integer&gt;  {
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;insert into order_item(order_id,book_id,amount,price) values(?1,?2,?3,?4)&quot;,nativeQuery = true)
-&nbsp;  void addItem(Integer orderId,Integer bookId,Integer amount, BigDecimal price);
+&nbsp;public interface BookRepository extends JpaRepository&lt;Book, Integer&gt;  {
+&nbsp;  @Query(value=&quot;from Book where enabled=true&quot;)
+&nbsp;  List&lt;Book&gt; getBooks();
 &nbsp;
-&nbsp;  @Query(value=&quot;select * from order_item where order_id=?1&quot;,nativeQuery = true)
-&nbsp;  List&lt;OrderItem&gt; getOrderItemById(Integer orderId);
+&nbsp;  @Query(value=&quot;from Book where bookId = :bookId&quot;)
+&nbsp;  Book getBookByBookId(@Param(&quot;bookId&quot;)Integer id);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `inventory`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyInventory(Integer book_id, Integer amount);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `enabled`=0 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void deleteBookByBookId(Integer book_id);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;insert into `book`(name,author,price,isbn,inventory,description,image,type,brief,enabled) values(?1,?2,?3,?4,?5,?6,?7,?8,?9,1)&quot;,nativeQuery = true)
+&nbsp;  void addBook(String name,String Author,BigDecimal Price,String ISBN,Integer Inventory,String Description,String Image,String Type,String Brief);
+&nbsp;
+&nbsp;  @Query(value=&quot;select * from `book` where `name` like ?1 and `enabled`=true&quot;,nativeQuery = true)
+&nbsp;  List&lt;Book&gt; getBookByName(String name);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `name`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyName(Integer book_id, String name);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `author`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyAuthor(Integer book_id, String author);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `price`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyPrice(Integer book_id, BigDecimal price);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `isbn`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyISBN(Integer book_id, String ISBN);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `description`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyDescription(Integer book_id, String description);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `image`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyImage(Integer book_id, String image);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `type`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyType(Integer book_id, String type);
+&nbsp;
+&nbsp;  @Modifying
+&nbsp;  @Query(value=&quot;update `book` set `brief`=?2 where `book_id`=?1&quot;,nativeQuery = true)
+&nbsp;  void modifyBrief(Integer book_id, String brief);
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -95,7 +138,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

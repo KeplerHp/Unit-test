@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > CartRepository</title>
+  <title>Coverage Report > HomeRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.bookstore.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: CartRepository (com.bookstore.repository)</h1>
+<h1>Coverage Summary for Class: HomeRepository (com.bookstore.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">CartRepository$MockitoMock$421469010</td>
+    <td class="name">HomeRepository$MockitoMock$1832120783</td>
   </tr>
   <tr>
-    <td class="name">CartRepository$MockitoMock$421469010$auxiliary$u7vIa9ym</td>
+    <td class="name">HomeRepository$MockitoMock$1832120783$auxiliary$7wyZBKYu</td>
   </tr>
   <tr>
-    <td class="name">CartRepository$MockitoMock$421469010$auxiliary$Vyv9dVBP</td>
+    <td class="name">HomeRepository$MockitoMock$1832120783$auxiliary$m4jtGh2b</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -49,49 +49,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.repository;
-&nbsp;import com.bookstore.entity.Book;
-&nbsp;import com.bookstore.entity.CartItem;
-&nbsp;import com.bookstore.dao.CartDao;
-&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
-&nbsp;import org.springframework.data.jpa.repository.Modifying;
-&nbsp;import org.springframework.data.jpa.repository.Query;
-&nbsp;import org.springframework.data.repository.query.Param;
 &nbsp;
-&nbsp;import javax.transaction.Transactional;
-&nbsp;import java.sql.Timestamp;
+&nbsp;import com.bookstore.entity.HomeItem;
 &nbsp;import java.util.List;
-&nbsp;import java.util.Map;
-&nbsp;
-&nbsp;@Transactional
-&nbsp;public interface CartRepository extends JpaRepository&lt;CartItem, Integer&gt;{
-&nbsp;  @Query(value=&quot;select * from `cart_item` where `user_id`=?1&quot;,nativeQuery=true)
-&nbsp;  List&lt;CartItem&gt; getItems(Integer id);
-&nbsp;
-&nbsp;  @Query(value=&quot;select * from cart_item where user_id=?1 and active=1&quot;, nativeQuery=true)
-&nbsp;  List&lt;CartItem&gt; getRealCartItems(Integer id);
-&nbsp;
-&nbsp;  @Query(value=&quot;from CartItem where userId = :userId and bookId = :bookId&quot;)
-&nbsp;  CartItem getCartItemById(@Param(&quot;userId&quot;)Integer userId, @Param(&quot;bookId&quot;) Integer bookId);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;replace into `cart_item` (user_id,book_id,amount,active) values(?1,?2,?3,?4)&quot;,nativeQuery = true)
-&nbsp;  void addCartItem(Integer userId, Integer bookId, Integer amount, Boolean active);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;delete from `cart_item` where `user_id`=?1 and `book_id`=?2&quot;,nativeQuery = true)
-&nbsp;  void deleteCartItem(Integer userId, Integer bookId);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;delete from `cart_item` where `user_id`=?1&quot;, nativeQuery = true)
-&nbsp;  void submitCart(Integer userId);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `cart_item` set `active`=?3 where `user_id`=?1 and `book_id`=?2&quot;,nativeQuery = true)
-&nbsp;  void setCartItem(Integer userId,Integer bookId,Boolean active);
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Query;
 &nbsp;
 &nbsp;
-&nbsp;
+&nbsp;public interface HomeRepository extends JpaRepository&lt;HomeItem,Integer&gt; {
+&nbsp;  @Query(value=&quot;from HomeItem&quot;)
+&nbsp;  List&lt;HomeItem&gt; getHomeContent();
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -115,7 +84,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

@@ -110,7 +110,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;        System.out.println(&quot;login Auth:&quot;+ userAuth);</b>
 <b class="fc">&nbsp;        if (userAuth != null) {</b>
 <b class="fc">&nbsp;            User nowUser=userService.getUserById(userAuth.getUserId());</b>
-<b class="fc">&nbsp;            if(nowUser.getEnabled()==false)</b>
+<b class="fc">&nbsp;            if(!nowUser.getEnabled())</b>
 &nbsp;            {
 <b class="fc">&nbsp;                return MessageUtil.createMessage(MessageUtil.LOGIN_ERROR_CODE, MessageUtil.LOGIN_BAN_MSG);</b>
 &nbsp;            }
@@ -163,7 +163,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

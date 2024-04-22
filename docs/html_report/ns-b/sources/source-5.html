@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > HomeService</title>
+  <title>Coverage Report > CartDao</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.service</a>
+    <a href="../index.html">com.bookstore.dao</a>
 </div>
 
-<h1>Coverage Summary for Class: HomeService (com.bookstore.service)</h1>
+<h1>Coverage Summary for Class: CartDao (com.bookstore.dao)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">HomeService$MockitoMock$438955681</td>
+    <td class="name">CartDao$MockitoMock$516764644</td>
   </tr>
   <tr>
-    <td class="name">HomeService$MockitoMock$438955681$auxiliary$Or1Wm8jk</td>
+    <td class="name">CartDao$MockitoMock$516764644$auxiliary$Er4Ea5AA</td>
   </tr>
   <tr>
-    <td class="name">HomeService$MockitoMock$438955681$auxiliary$XYMMdrC5</td>
+    <td class="name">CartDao$MockitoMock$516764644$auxiliary$Tp2I8tpj</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,14 +48,25 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
 &nbsp;
-&nbsp;import com.bookstore.entity.HomeItem;
-&nbsp;
+&nbsp;import com.bookstore.entity.CartItem;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;public interface HomeService {
-&nbsp;    List&lt;HomeItem&gt; getHomeContent();
+&nbsp;public interface CartDao {
+&nbsp;  List&lt;CartItem&gt; getCartItems();
+&nbsp;
+&nbsp;  void addCartItem(Integer bookId, Integer amount, Boolean active);
+&nbsp;
+&nbsp;  void setCartItem(Integer bookId,Boolean active);
+&nbsp;
+&nbsp;  void deleteCartItem(Integer bookId);
+&nbsp;
+&nbsp;  void submitCart();
+&nbsp;
+&nbsp;  List&lt;CartItem&gt; getRealCartItems();
+&nbsp;
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -80,7 +91,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

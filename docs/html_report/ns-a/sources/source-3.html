@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > OrderDao</title>
+  <title>Coverage Report > UserService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.dao</a>
+    <a href="../index.html">com.bookstore.service</a>
 </div>
 
-<h1>Coverage Summary for Class: OrderDao (com.bookstore.dao)</h1>
+<h1>Coverage Summary for Class: UserService (com.bookstore.service)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">OrderDao$MockitoMock$1407780688</td>
+    <td class="name">UserService$MockitoMock$858664585</td>
   </tr>
   <tr>
-    <td class="name">OrderDao$MockitoMock$1407780688$auxiliary$9zZ0tAWk</td>
+    <td class="name">UserService$MockitoMock$858664585$auxiliary$3gHXrbdw</td>
   </tr>
   <tr>
-    <td class="name">OrderDao$MockitoMock$1407780688$auxiliary$VC8wtsef</td>
+    <td class="name">UserService$MockitoMock$858664585$auxiliary$UVpDn0lT</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,26 +48,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
 &nbsp;
-&nbsp;import com.bookstore.entity.Order;
-&nbsp;import com.bookstore.entity.OrderItem;
-&nbsp;
-&nbsp;import com.bookstore.entity.OrderStat;
-&nbsp;import java.sql.Timestamp;
+&nbsp;import com.bookstore.entity.User;
+&nbsp;import com.bookstore.entity.UserAuth;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;public interface OrderDao {
-&nbsp;  List&lt;Order&gt; getOrder();
+&nbsp;public interface UserService {
+&nbsp;    UserAuth checkAuth(String username, String userPassword);
 &nbsp;
-&nbsp;  Order getOrderByOrderId(Integer orderId);
+&nbsp;    User getUser();
 &nbsp;
-&nbsp;  List&lt;Order&gt; getAllOrder();
+&nbsp;    User getUserById(Integer userId);
 &nbsp;
-&nbsp;  List&lt;OrderStat&gt; getOrderByTime(String t1, String t2);
+&nbsp;    boolean register(String username, String password,String name, String email);
 &nbsp;
-&nbsp;  List&lt;OrderStat&gt; getAllOrderByTime(String t1, String t2);
+&nbsp;    List&lt;User&gt; getAllUsers();
+&nbsp;
+&nbsp;    void updateUserStatus(Integer userId,Boolean enabled);
+&nbsp;
+&nbsp;    boolean registerCheck(String username);
+&nbsp;
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -91,7 +94,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

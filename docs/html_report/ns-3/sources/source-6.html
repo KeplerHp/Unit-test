@@ -57,7 +57,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 </tr>
   <tr>
-    <td class="name">UserDaoImpl$$EnhancerBySpringCGLIB$$d286ee81</td>
+    <td class="name">UserDaoImpl$$EnhancerBySpringCGLIB$$6b209762</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -92,7 +92,6 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;import com.bookstore.entity.UserAuth;
 &nbsp;import com.bookstore.repository.UserAuthRepository;
 &nbsp;import com.bookstore.repository.UserRepository;
-&nbsp;import javax.transaction.Transactional;
 &nbsp;import org.springframework.beans.factory.annotation.Autowired;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;import org.springframework.web.context.request.RequestContextHolder;
@@ -172,7 +171,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;  public boolean registerCheck(String username) {
 <b class="fc">&nbsp;    System.out.println(&quot;registerCheck dao called, username=&quot;+username);</b>
 <b class="fc">&nbsp;    Integer res=userAuthRepository.registerCheck(username);</b>
-<b class="fc">&nbsp;    if(res&gt;0) return true; else return false;</b>
+<b class="fc">&nbsp;    return res &gt; 0;</b>
 &nbsp;  }
 &nbsp;}
 </code>
@@ -198,7 +197,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

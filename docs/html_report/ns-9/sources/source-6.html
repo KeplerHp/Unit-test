@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > BookRepository</title>
+  <title>Coverage Report > CartRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.bookstore.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: BookRepository (com.bookstore.repository)</h1>
+<h1>Coverage Summary for Class: CartRepository (com.bookstore.repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">BookRepository$MockitoMock$1850370425</td>
+    <td class="name">CartRepository$MockitoMock$52250450</td>
   </tr>
   <tr>
-    <td class="name">BookRepository$MockitoMock$1850370425$auxiliary$byXhT0SD</td>
+    <td class="name">CartRepository$MockitoMock$52250450$auxiliary$beATQk42</td>
   </tr>
   <tr>
-    <td class="name">BookRepository$MockitoMock$1850370425$auxiliary$lnooqOCU</td>
+    <td class="name">CartRepository$MockitoMock$52250450$auxiliary$ElpUqb3U</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -50,69 +50,42 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.repository;
 &nbsp;
-&nbsp;import com.bookstore.entity.Book;
-&nbsp;import java.math.BigDecimal;
+&nbsp;import com.bookstore.entity.CartItem;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 &nbsp;import org.springframework.data.jpa.repository.Modifying;
 &nbsp;import org.springframework.data.jpa.repository.Query;
 &nbsp;import org.springframework.data.repository.query.Param;
-&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;import javax.transaction.Transactional;
 &nbsp;import java.util.List;
 &nbsp;
 &nbsp;@Transactional
-&nbsp;public interface BookRepository extends JpaRepository&lt;Book, Integer&gt;  {
-&nbsp;  @Query(value=&quot;from Book where enabled=true&quot;)
-&nbsp;  List&lt;Book&gt; getBooks();
+&nbsp;public interface CartRepository extends JpaRepository&lt;CartItem, Integer&gt;{
+&nbsp;  @Query(value=&quot;select * from `cart_item` where `user_id`=?1&quot;,nativeQuery=true)
+&nbsp;  List&lt;CartItem&gt; getItems(Integer id);
 &nbsp;
-&nbsp;  @Query(value=&quot;from Book where bookId = :bookId&quot;)
-&nbsp;  Book getBookByBookId(@Param(&quot;bookId&quot;)Integer id);
+&nbsp;  @Query(value=&quot;select * from cart_item where user_id=?1 and active=1&quot;, nativeQuery=true)
+&nbsp;  List&lt;CartItem&gt; getRealCartItems(Integer id);
 &nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `inventory`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyInventory(Integer book_id, Integer amount);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `enabled`=0 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void deleteBookByBookId(Integer book_id);
+&nbsp;  @Query(value=&quot;from CartItem where userId = :userId and bookId = :bookId&quot;)
+&nbsp;  CartItem getCartItemById(@Param(&quot;userId&quot;)Integer userId, @Param(&quot;bookId&quot;) Integer bookId);
 &nbsp;
 &nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;insert into `book`(name,author,price,isbn,inventory,description,image,type,brief,enabled) values(?1,?2,?3,?4,?5,?6,?7,?8,?9,1)&quot;,nativeQuery = true)
-&nbsp;  void addBook(String name,String Author,BigDecimal Price,String ISBN,Integer Inventory,String Description,String Image,String Type,String Brief);
-&nbsp;
-&nbsp;  @Query(value=&quot;select * from `book` where `name` like ?1 and `enabled`=true&quot;,nativeQuery = true)
-&nbsp;  List&lt;Book&gt; getBookByName(String name);
+&nbsp;  @Query(value=&quot;replace into `cart_item` (user_id,book_id,amount,active) values(?1,?2,?3,?4)&quot;,nativeQuery = true)
+&nbsp;  void addCartItem(Integer userId, Integer bookId, Integer amount, Boolean active);
 &nbsp;
 &nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `name`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyName(Integer book_id, String name);
+&nbsp;  @Query(value=&quot;delete from `cart_item` where `user_id`=?1 and `book_id`=?2&quot;,nativeQuery = true)
+&nbsp;  void deleteCartItem(Integer userId, Integer bookId);
 &nbsp;
 &nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `author`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyAuthor(Integer book_id, String author);
+&nbsp;  @Query(value=&quot;delete from `cart_item` where `user_id`=?1&quot;, nativeQuery = true)
+&nbsp;  void submitCart(Integer userId);
 &nbsp;
 &nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `price`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyPrice(Integer book_id, BigDecimal price);
+&nbsp;  @Query(value=&quot;update `cart_item` set `active`=?3 where `user_id`=?1 and `book_id`=?2&quot;,nativeQuery = true)
+&nbsp;  void setCartItem(Integer userId,Integer bookId,Boolean active);
 &nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `isbn`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyISBN(Integer book_id, String ISBN);
 &nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `description`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyDescription(Integer book_id, String description);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `image`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyImage(Integer book_id, String image);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `type`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyType(Integer book_id, String type);
-&nbsp;
-&nbsp;  @Modifying
-&nbsp;  @Query(value=&quot;update `book` set `brief`=?2 where `book_id`=?1&quot;,nativeQuery = true)
-&nbsp;  void modifyBrief(Integer book_id, String brief);
 &nbsp;
 &nbsp;}
 </code>
@@ -138,7 +111,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>

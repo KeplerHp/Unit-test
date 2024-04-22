@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
-  <title>Coverage Report > BookService</title>
+  <title>Coverage Report > HomeDao</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">com.bookstore.service</a>
+    <a href="../index.html">com.bookstore.dao</a>
 </div>
 
-<h1>Coverage Summary for Class: BookService (com.bookstore.service)</h1>
+<h1>Coverage Summary for Class: HomeDao (com.bookstore.dao)</h1>
 
 <table class="coverageStats">
 
@@ -30,13 +30,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">BookService$MockitoMock$466936278</td>
+    <td class="name">HomeDao$MockitoMock$895429179</td>
   </tr>
   <tr>
-    <td class="name">BookService$MockitoMock$466936278$auxiliary$91ok5dap</td>
+    <td class="name">HomeDao$MockitoMock$895429179$auxiliary$hyuNUomX</td>
   </tr>
   <tr>
-    <td class="name">BookService$MockitoMock$466936278$auxiliary$OKO7aA7v</td>
+    <td class="name">HomeDao$MockitoMock$895429179$auxiliary$SsBQRGNc</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,29 +48,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.service;
+<code class="sourceCode" id="sourceCode">&nbsp;package com.bookstore.dao;
 &nbsp;
-&nbsp;import com.bookstore.entity.Book;
-&nbsp;
-&nbsp;import com.github.pagehelper.PageInfo;
+&nbsp;import com.bookstore.entity.HomeItem;
 &nbsp;import java.util.List;
-&nbsp;import java.util.Map;
 &nbsp;
-&nbsp;public interface BookService {
-&nbsp;  List&lt;Book&gt; getBooks();
-&nbsp;
-&nbsp;  PageInfo&lt;Book&gt; getBooksByPage(Integer num);
-&nbsp;
-&nbsp;  Book getBookByBookId(Integer bookId);
-&nbsp;
-&nbsp;  void deleteBookByBookId(Integer bookId);
-&nbsp;
-&nbsp;  void addBook(Map&lt;String, String&gt; params);
-&nbsp;
-&nbsp;  List&lt;Book&gt; getBookByName(String name);
-&nbsp;
-&nbsp;  void updateBook(Map&lt;String,String&gt; params);
+&nbsp;public interface HomeDao {
+&nbsp;  List&lt;HomeItem&gt; getHomeContent();
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -94,7 +80,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-04-21 22:31</div>
+    <div style="float:right;">generated on 2024-04-22 14:17</div>
 </div>
 </body>
 </html>
